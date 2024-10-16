@@ -15,30 +15,35 @@ class MyLinkedList:
         self.right = ListNode(0)
         self.left.next = self.right
         self.right.prev = self.left
+        self.len = 0
 
     def get(self, index: int) -> int:
         node = self.getNode(index)
-        if node and node is not self.right:
+        if node and node is not self.right and node is not self.left:
             return node.val
         return -1
 
     def addAtHead(self, val: int) -> None:
         self.addNode(val, self.left, self.left.next)
+        self.len += 1
 
     def addAtTail(self, val: int) -> None:
         self.addNode(val, self.right.prev, self.right)
+        self.len += 1
 
     def addAtIndex(self, index: int, val: int) -> None:
         node = self.getNode(index)
         if node:
             self.addNode(val, node.prev, node)
+            self.len += 1
 
     def deleteAtIndex(self, index: int) -> None:
         node = self.getNode(index)
-        if node and node is not self.right:
+        if node and node is not self.right and node is not self.left:
             prev, nxt = node.prev, node.next
             prev.next = nxt
             nxt.prev = prev
+            self.len -= 1
 
     def addNode(self, val: int, prev: ListNode, nxt: ListNode) -> None:
         node = ListNode(val)
@@ -48,10 +53,16 @@ class MyLinkedList:
         node.prev = prev
 
     def getNode(self, index: int) -> ListNode | None:
-        cur = self.left.next
+        if (self.len // 2) <= index:
+            cur = self.left.next
+            move = lambda x: x.next
+        else:
+            cur = self.right.prev
+            index = self.len - 1 - index
+            move = lambda x: x.prev
 
         while cur and index > 0:
-            cur = cur.next
+            cur = move(cur)
             index -= 1
 
         if index == 0:
