@@ -5,7 +5,7 @@ def binary_search(item: int, arr: list[int]) -> int | None:
     high = len(arr) - 1
 
     while low <= high:
-        mid = (low + high) // 2
+        mid = low + ((high - low) // 2)
         guess = arr[mid]
 
         if guess == item:
