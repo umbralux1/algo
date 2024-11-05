@@ -1,11 +1,11 @@
 
 
-def binary_search(item, arr: list) -> list:
+def binary_search(item, arr: list):
     lo = 0
     hi = len(arr) - 1
 
     while lo <= hi:
-        mid = lo + (hi - lo) // 2
+        mid = (lo + hi) // 2
         guess = arr[mid]
 
         if guess == item:

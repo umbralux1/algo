@@ -1,10 +1,10 @@
 
 
-def insertion_sort(arr: list) -> list:
-    for i in range(0, len(arr) - 1):
+def insertion_sort(arr: list):
+    for i in range(len(arr) - 1):
         j = i
-        while j >= 0 and arr[j] > arr[j + 1]:
-            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        while j >= 0 and arr[j] > arr[j+1]:
+            arr[j], arr[j+1] = arr[j+1], arr[j]
             j -= 1
 
     return arr

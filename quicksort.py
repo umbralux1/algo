@@ -15,6 +15,7 @@ def quicksort(arr: list) -> list:
 print(quicksort([1, 2]))
 assert quicksort([1, 2]) == [1, 2]
 
+print(quicksort([2, 5, 10, 3, 6]))
 assert quicksort([2, 5, 10, 3, 6]) == [2, 3, 5, 6, 10]
 
 print(quicksort([1, 1, 1]))

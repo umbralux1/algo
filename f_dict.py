@@ -1,6 +1,6 @@
 
 
-def empty_dict(_): return None
+def empty_dict(_): return
 
 
 def add(d, k, v):
@@ -12,7 +12,7 @@ def add(d, k, v):
     return new_dict
 
 
-def add_f(d, k, v): return lambda x: v if k == x else d(x)
+def add_f(d, k, v): return lambda x: v if x == k else d(x)
 
 
 d = add(empty_dict, "a", 1)
