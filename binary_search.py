@@ -1,11 +1,12 @@
+import pytest
 
 
-def binary_search(item, arr: list):
+def binary_search(item, arr: list) -> int:
     lo = 0
     hi = len(arr) - 1
 
     while lo <= hi:
-        mid = (lo + hi) // 2
+        mid = lo + (hi - lo) // 2
         guess = arr[mid]
 
         if guess == item:
@@ -17,22 +18,29 @@ def binary_search(item, arr: list):
 
     return -1
 
-
-test_list = [1, 3, 5, 7, 9]
-
-res1 = binary_search(3, test_list)
-print(res1)
-assert res1 == 1
+def test_binary_search_found():
+    assert binary_search(3, [1, 2, 3, 4, 5]) == 2
+    assert binary_search(1, [1, 2, 3, 4, 5]) == 0
+    assert binary_search(5, [1, 2, 3, 4, 5]) == 4
 
 
-res2 = binary_search(-1, test_list)
-print(res2)
-assert res2 == -1
+def test_binary_search_not_found():
+    assert binary_search(6, [1, 2, 3, 4, 5]) == -1
+    assert binary_search(0, [1, 2, 3, 4, 5]) == -1
+    assert binary_search(10, [1, 3, 5, 7, 9]) == -1
 
-res3 = binary_search(10, test_list)
-print(res3)
-assert res3 == -1
 
-res4 = binary_search(7, test_list)
-print(res4)
-assert res4 == 3
+def test_binary_search_empty():
+    assert binary_search(1, []) == -1
+
+
+def test_binary_search_single_element():
+    assert binary_search(1, [1]) == 0
+    assert binary_search(2, [1]) == -1
+
+
+def test_binary_search_duplicates():
+    # In case of duplicates, binary search usually returns the index of any one instance of the item.
+    assert binary_search(2, [1, 2, 2, 2, 3]) in [1, 2, 3]
+
+
