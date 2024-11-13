@@ -1,7 +1,7 @@
 import pytest
 
 
-def binary_search(item, arr: list) -> int:
+def binary_search(item, arr: list) -> list:
     lo = 0
     hi = len(arr) - 1
 
@@ -17,6 +17,7 @@ def binary_search(item, arr: list) -> int:
             lo = mid + 1
 
     return -1
+
 
 def test_binary_search_found():
     assert binary_search(3, [1, 2, 3, 4, 5]) == 2
