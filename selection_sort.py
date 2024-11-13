@@ -19,7 +19,7 @@ def selection_sort(arr: list) -> list:
     return res
 
 
-def in_place_selection_sort(arr: list) ->list:
+def in_place_selection_sort(arr: list) -> list:
     for i in range(len(arr)-1):
         min_index = i
         for j in range(i+1, len(arr)):
