@@ -1,7 +1,7 @@
 import pytest
 
 
-def binary_search(item, arr: list) -> list:
+def binary_search(item, arr: list):
     lo = 0
     hi = len(arr) - 1
 
